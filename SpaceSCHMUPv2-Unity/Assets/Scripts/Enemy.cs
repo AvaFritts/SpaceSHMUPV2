@@ -69,4 +69,22 @@ public class Enemy : MonoBehaviour
         pos = tempPos; //position is equal to temp position
     }//end Move
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject otherGo = collision.gameObject;
+
+        if(otherGo.tag == "ProjectileHero")
+        {
+            Debug.Log("Enemy hit by projectile " + otherGo.name);
+            Destroy(otherGo); //destroy the projectile
+            GameManager.GM.UpdateScore(score); //add to score
+            Destroy(gameObject); //destroy the enemy
+        }
+        else
+        {
+            Debug.Log("Enemy hit by " + otherGo.name);
+        }
+        
+    }
+
 }

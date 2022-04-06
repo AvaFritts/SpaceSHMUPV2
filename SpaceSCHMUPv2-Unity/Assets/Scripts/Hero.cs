@@ -48,6 +48,10 @@ public class Hero : MonoBehaviour
 
     [Space(10)]
 
+    [Header("Projectile Movement")]
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 40;
+
     private GameObject lastTriggerGo; //reference to the last triggering game object
    
     [SerializeField] //show in inspector
@@ -60,7 +64,7 @@ public class Hero : MonoBehaviour
         get { return (_shieldLevel); }
         set
         {
-            _shieldLevel = Mathf.Min(value, maxShield); //Min returns the smallest of the values, thereby making max sheilds 4
+            _shieldLevel = Mathf.Min(value, maxShield); //Min returns the smallest of the values, thereby making max shields 4
 
             //if the shield is going to be set to less than zero
             if (value < 0)
@@ -110,6 +114,12 @@ public class Hero : MonoBehaviour
         //ship rotation for dynamic feel
         transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
 
+       //check for spacebar
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FireProjectile();
+        }
+
     }//end Update()
 
 
@@ -138,4 +148,14 @@ public class Hero : MonoBehaviour
 
         }//end OnTriggerEnter()
 
+    void FireProjectile()
+    {
+        GameObject projGo = Instantiate<GameObject>(projectilePrefab);
+        projGo.transform.position = transform.position;
+        Rigidbody rb = projGo.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.up * projectileSpeed;
+        
     }
+
+    
+}
