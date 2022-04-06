@@ -2,8 +2,8 @@
  * Created by: Akram Taghavi-Burris
  * Date Created: March 16, 2022
  * 
- * Last Edited by:
- * Last Edited: 
+ * Last Edited by: Ava Fritts
+ * Last Edited: April 5 2022
  * 
  * Description: Shield level controler, adjusts the fresnel effect power based on level of shields.
 ****/
