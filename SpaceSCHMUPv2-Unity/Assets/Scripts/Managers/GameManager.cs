@@ -151,8 +151,8 @@ public class GameManager : MonoBehaviour
         //check for game state changes
         CheckGameState();
 
-        //Outpot game state
-        Debug.Log("Game State " + gameState);
+        //Outpot game state (Commented out because it clutters the game.
+        //Debug.Log("Game State " + gameState);
 
     }//end Update
 

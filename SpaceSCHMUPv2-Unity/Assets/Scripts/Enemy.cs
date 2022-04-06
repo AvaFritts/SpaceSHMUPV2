@@ -2,8 +2,8 @@
  * Created by: Akram Taghavi-Burris
  * Date Created: March 16, 2022
  * 
- * Last Edited by: 
- * Last Edited: 
+ * Last Edited by: Ava Fritts
+ * Last Edited: April 5 2022
  * 
  * Description: Enemy controler
 ****/
@@ -46,7 +46,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //Call the Move Method
+        //Call the Move Method
+        Move();
 
 
         //Check if bounds check exists and the object is off the bottom of the screne
@@ -59,7 +60,13 @@ public class Enemy : MonoBehaviour
 
     }//end Update()
 
-    
+
     //Virtual methods can be overridden by child instances
+    public virtual void Move()
+    {
+        Vector3 tempPos = pos; //temp position
+        tempPos.y -= speed * Time.deltaTime; //temp y position, moving down
+        pos = tempPos; //position is equal to temp position
+    }//end Move
 
 }
