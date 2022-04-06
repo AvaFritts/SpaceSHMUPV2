@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             gm = this; //set gm to this gm of the game object
             Debug.Log(gm);
         }
-        else //else if gm is not null a Game Manager must already exsist
+        else //else if gm is not null a Game Manager must already exist
         {
             Destroy(this.gameObject); //In this case you need to delete this gm
         }
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     public string defaultEndMessage = "Game Over";//the end screen message, depends on winning outcome
-    public string looseMessage = "You Loose"; //Message if player looses
+    public string loseMessage = "You Lose"; //Message if player loses
     public string winMessage = "You Win"; //Message if player wins
     [HideInInspector] public string endMsg;//the end screen message, depends on winning outcome
 
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
         //check for game state changes
         CheckGameState();
 
-        //Outpot game state (Commented out because it clutters the game.
+        //Output game state (Commented out because it clutters the game).
         //Debug.Log("Game State " + gameState);
 
     }//end Update
@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameState.Title:
-                currentLives = defaultsLives; //set current lives to default (inital) value
+                currentLives = defaultsLives; //set current lives to default (initial) value
                 break;
 
             case GameState.Playing:
@@ -186,14 +186,14 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.LostLevel:
-                currentLives = defaultsLives; //reset current lives to default (inital) value
+                currentLives = defaultsLives; //reset current lives to default (initial) value
 
-                endMsg = looseMessage; //set loose message
+                endMsg = loseMessage; //set lose message
                 GameOver(); //move to game over
                 break;
 
             case GameState.GameOver:
-                currentLives = defaultsLives; //set current lives to default (inital) value
+                currentLives = defaultsLives; //set current lives to default (initial) value
                 break;
 
             case GameState.Idle:
@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState Testing:
-                currentLives = defaultsLives; //set current lives to default (inital) value
+                currentLives = defaultsLives; //set current lives to default (initial) value
                 SetDefaultGameStats(); //Run the default game stats to playtest
                 break;
 
@@ -237,10 +237,10 @@ public class GameManager : MonoBehaviour
         //set High Score
         if (recordHighScore) //if we are recording highscore
         {
-            //if the high score, is less than the default high score
+            //if the high score is less than the default high score
             if (highScore <= defaultHighScore)
             {
-                highScore = defaultHighScore; //set the high score to defulat
+                highScore = defaultHighScore; //set the high score to default
                 PlayerPrefs.SetInt("HighScore", highScore); //update high score PlayerPref
             }//end if (highScore <= defaultHighScore)
         }//end  if (recordHighScore) 
@@ -350,7 +350,7 @@ public class GameManager : MonoBehaviour
         //test to move to next level
         if (nextLevel) { nextLevel = false; NextLevel(); }
 
-        //test for lossing level
+        //test for losing level
         if (levelLost) { levelLost = false; LostLife(); }
 
         //test if player won

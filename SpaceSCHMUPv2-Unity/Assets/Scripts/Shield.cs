@@ -20,7 +20,7 @@ public class Shield : MonoBehaviour
     public Color shieldColor; //color of shields
     public Color shieldHitColor; //color of shields hit
     public Color shieldPowerColor; //color of shields powerup
-    public float alphaLevel = 0.5f; //the shiled level shown by shader
+    public float alphaLevel = 0.5f; //the shield level shown by shader
     public float minAlpha = 0.5f; //semi-transparent fresnel effect
     public float maxAlpha = 1f; //transparent fresnel effect
 
@@ -37,7 +37,7 @@ public class Shield : MonoBehaviour
         lastLevel = currLevel; //record the shield level
         alphaLevel = 0.5f; //set the default alpha
         mat = GetComponent<Renderer>().material; //get the material for the shield
-        mat.SetColor("_color", shieldColor); //set the defualt color
+        mat.SetColor("_color", shieldColor); //set the default color
         mat.SetFloat("_alphaLevel", alphaLevel); //finds the materials shader variable, and sets the value
     }
 
@@ -57,7 +57,7 @@ public class Shield : MonoBehaviour
         if (lastLevel > currLevel)
         {
             lastLevel = currLevel; //set the level Level to the current level shield
-            alphaLevel += 0.1f; // decrease the levelShown value slowly (by time) therby decresing the transprancy
+            alphaLevel += 0.1f; // decrease the levelShown value slowly (by time) therby decresing the transparency
             mat.SetColor("_color", shieldHitColor); //Change the color on hit
             mat.SetFloat("_alphaLevel", Mathf.Clamp(alphaLevel, minAlpha, maxAlpha)); //finds the materials shader variable, and sets the value
             
@@ -68,7 +68,7 @@ public class Shield : MonoBehaviour
         if (lastLevel < currLevel)
         {
             lastLevel = currLevel;//set the level Level to the current level shield
-            alphaLevel -= 0.1f; // increase the levelShown value slowly (by time) therby incresing the transprancy
+            alphaLevel -= 0.1f; // increase the levelShown value slowly (by time) therby incresing the transparency
             mat.SetFloat("_alphaLevel", Mathf.Clamp(alphaLevel, minAlpha, maxAlpha)); //finds the materials shader variable, and sets the value
             mat.SetColor("_color", shieldPowerColor); //Change the color 
 

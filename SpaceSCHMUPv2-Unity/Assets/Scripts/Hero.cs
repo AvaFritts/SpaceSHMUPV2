@@ -3,7 +3,7 @@
  * Date Created: March 16, 2022
  * 
  * Last Edited by: Ava Fritts
- * Last Edited: April 5 2022
+ * Last Edited: April 6 2022
  * 
  * Description: Hero ship controller
 ****/
@@ -19,20 +19,20 @@ public class Hero : MonoBehaviour
     /*** VARIABLES ***/
 
     #region PlayerShip Singleton
-    static public Hero SHIP; //refence GameManager
+    static public Hero SHIP; //reference GameManager
    
     //Check to make sure only one gm of the GameManager is in the scene
     void CheckSHIPIsInScene()
     {
 
-        //Check if instnace is null
+        //Check if instance is null
         if (SHIP == null)
         {
             SHIP = this; //set SHIP to this game object
         }
         else //else if SHIP is not null send an error
         {
-            Debug.LogError("Hero.Awake() - Attempeeted to assign second Hero.SHIP");
+            Debug.LogError("Hero.Awake() - Attempted to assign second Hero.SHIP");
         }
     }//end CheckGameManagerIsInScene()
     #endregion
@@ -54,15 +54,15 @@ public class Hero : MonoBehaviour
     private float _shieldLevel = 1; //level for shields
     public int maxShield = 4; //maximum shield level
     
-    //method that acts as a field (property), if the property falls below zero the game object is desotryed
+    //method that acts as a field (property), if the property falls below zero the game object is destroyed
     public float shieldLevel
     {
         get { return (_shieldLevel); }
         set
         {
-            _shieldLevel = Mathf.Min(value, maxShield); //Min returns the smallest of the values, therby making max sheilds 4
+            _shieldLevel = Mathf.Min(value, maxShield); //Min returns the smallest of the values, thereby making max sheilds 4
 
-            //if the sheild is going to be set to less than zero
+            //if the shield is going to be set to less than zero
             if (value < 0)
             {
                 Destroy(this.gameObject);
@@ -118,12 +118,12 @@ public class Hero : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Transform rootT = other.gameObject.transform.root;
-        //tranform root returens the topmost transfrom in the hierarchy (i.e. parent)
+        //transform.root returns the topmost transform in the hierarchy
         
         GameObject go = rootT.gameObject; //game object of parent transform
         if (go == lastTriggerGo) { return; } //don't do anything if it's the same object we last collied with
       
-        lastTriggerGo = go; //set the triger to the last trigger
+        lastTriggerGo = go; //set the trigger to the last trigger
         
         if (go.tag == "Enemy")
         {
